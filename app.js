@@ -13,7 +13,8 @@ app.get('/', (req, res) => {
     console.log(`coordinates: ${coordinates.left}`)
     console.log(`selection: ${selection}`)
     // check if the selection matches the coordinates in the db
-    const correct = (coordinates.left === db[selection].left) && (coordinates.top === db[selection].top)
+    const RADIUS = 50
+    const correct = Math.hypot(coordinates.left - db[selection].left, coordinates.top - db[selection].top) <= RADIUS
     res.json({
         "coordinates": coordinates,
         "selection": selection,

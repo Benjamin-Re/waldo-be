@@ -1,14 +1,14 @@
 {
     "Waldo": {
-        "left": 30,
-        "top": 30
+        "left": 700,
+        "top": 500
     },
-    "Wenda": {
-        "left": 60,
-        "top": 60
+    "Welda": {
+        "left": 150,
+        "top": 150
     },
     "White Wizzard": {
-        "left": 90,
-        "top": 90
+        "left": 70,
+        "top": 800
     }
 }
