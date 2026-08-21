@@ -10,11 +10,12 @@ app.get('/', (req, res) => {
     // called with coordinates left: number, top: number and a selection: string
     const coordinates = JSON.parse(req.headers.coordinates)
     const selection = req.headers.selection
-    console.log(`coordinates: ${coordinates.left}`)
+    console.log(`x: ${coordinates.x}, y:${coordinates.y}`)
     console.log(`selection: ${selection}`)
     // check if the selection matches the coordinates in the db
-    const RADIUS = 50
-    const correct = Math.hypot(coordinates.left - db[selection].left, coordinates.top - db[selection].top) <= RADIUS
+    const RADIUS = 0.05
+    const correct = Math.hypot(coordinates.x - db[selection].x, coordinates.y - db[selection].y) <= RADIUS
+    console.log(`${coordinates.x - db[selection].x}`)
     res.json({
         "coordinates": coordinates,
         "selection": selection,
