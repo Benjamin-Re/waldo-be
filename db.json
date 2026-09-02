@@ -1,14 +1,18 @@
 {
-    "Waldo": {
-        "x": 0.5,
-        "y": 0.5
+    "kangurito": {
+        "x": 0.188,
+        "y": 0.47
     },
-    "Welda": {
-        "left": 150,
-        "top": 150
+    "red shirt": {
+        "x": 0.95,
+        "y": 0.61
     },
-    "White Wizzard": {
-        "left": 70,
-        "top": 800
+    "super mario": {
+        "x": 0.28,
+        "y": 0.78
+    },
+    "cotton candy": {
+        "x": 0.77,
+        "y": 0.61
     }
 }
