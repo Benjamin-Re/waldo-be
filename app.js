@@ -3,6 +3,9 @@ const cors = require('cors')
 const db = require('./db.json')
 
 const app = express()
+let start = 0
+let end = 0
+
 app.use(cors( {
     origin: '*'
 }))
@@ -20,6 +23,22 @@ app.get('/', (req, res) => {
         "coordinates": coordinates,
         "selection": selection,
         "status": correct
+    })
+})
+
+app.get('/start', (req, res) => {
+    start = Date.now()
+    console.log(`start: ${start}`)
+    res.json({
+        status: true
+    })
+})
+
+app.get('/end', (req, res) => {
+    end = Date.now()
+    const time = (end - start) / 1000
+    res.status(200).json({
+        "time": time
     })
 })
 
