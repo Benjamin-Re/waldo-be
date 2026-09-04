@@ -1,3 +1,4 @@
+const { existsSync, writeFileSync, readFileSync } = require('node:fs')
 const express = require("express")
 const cors = require('cors')
 const db = require('./db.json')
@@ -38,9 +39,22 @@ app.get('/start', (req, res) => {
 app.get('/end', (req, res) => {
     end = Date.now()
     const time = (end - start) / 1000
+    const user = req.headers.username
+    const game = req.headers.game
+    const newScore = { time, user, game }
+    const highscores = existsSync('./highscores.json') ? 
+        JSON.parse(readFileSync('./highscores.json', 'utf8')) : []
+    highscores.push(newScore)
+    writeFileSync('./highscores.json', JSON.stringify(highscores, null, 2))
     res.status(200).json({
         "time": time
     })
+})
+
+app.get('/highscores', (req, res) => {
+    const highscores = JSON.parse(readFileSync('./highscores.json', 'utf8'))
+    
+    res.json(highscores.sort((a,b) => a.time - b.time))
 })
 
 const PORT = process.env.PORT || 3000
